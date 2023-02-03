@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 import modelo.javabean.Empleado;
 
-public class Empresa implements IntGestionEmpresa{
+public class GestionEmpresaImplDao implements IntGestionEmpresa{
 	
 		
 	private String nombre;
 	private ArrayList<Empleado> personal;
 	
 	//Constructor del objeto Empresa.
-	public Empresa(String nombre) {
+	public GestionEmpresaImplDao(String nombre) {
 		this.nombre = nombre;
 		personal = new ArrayList<>();
 		cargarDatos();
@@ -19,7 +19,7 @@ public class Empresa implements IntGestionEmpresa{
 	
 	//Método privado para cargar datos iniciales en el ArrayList.
 	private void cargarDatos() {
-
+		
 		DepartamentoImplDao dpto1 = new DepartamentoImplDao("Departamentos");
 		TrabajoImplDao tr1 = new TrabajoImplDao("Trabajos");
 		personal.add(new Empleado(141001, "Pedro", "Mármol Sílice", null, 'H', 19500.00, 75.00, 

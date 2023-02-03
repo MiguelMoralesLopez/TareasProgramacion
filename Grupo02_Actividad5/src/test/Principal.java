@@ -8,7 +8,11 @@ public class Principal {
 	public static void main(String[] args) {
 		
 		//Creamos la empresa y realizamos la carga inicial de datos.
-		Empresa empr1 = new Empresa("EmpresaPrueba");
+		GestionEmpresaImplDao empr1 = new GestionEmpresaImplDao("EmpresaPrueba");
+		//Establezco el email de los empleados usando el método propio de la clase.
+		for (Empleado ele: empr1.buscarTodos()) {
+			ele.setEmail(ele.obtenerEmail());
+		}
 		//Comprobamos que se haya cargado todo correctamente.
 		System.out.println("Comprobar carga de datos.");
 		for (Empleado ele: empr1.buscarTodos()) {
@@ -21,8 +25,12 @@ public class Principal {
 		 */
 		System.out.println("----------------------------------------------------------------------------");
 		System.out.println("Añadir nuevo empleado");
-		Empleado emp1 = new Empleado(141001, "Andrés", "Ramirez Peña", null, 'H', 18000.00, 100, null, null);
-		Empleado emp2 = new Empleado(141006, "Roberto", "García Peña", null, 'H', 18000.00, 100, null, null);
+		Empleado emp1 = new Empleado(141001, "Andrés", "Ramirez Peña", null, 'H',
+				18000.00, 100, null, null);
+		emp1.setEmail(emp1.obtenerEmail());
+		Empleado emp2 = new Empleado(141006, "Roberto", "García Peña", null, 'H',
+				18000.00, 100, null, null);
+		emp2.setEmail(emp2.obtenerEmail());
 		
 		System.out.println("Intento añadir un empleado duplicado, por lo que da false: " + empr1.alta(emp1));
 		System.out.println("Añado un empleado nuevo, resultado: true. " + empr1.alta(emp2));
