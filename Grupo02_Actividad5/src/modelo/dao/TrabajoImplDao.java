@@ -1,6 +1,7 @@
 package modelo.dao;
 
 import java.util.ArrayList;
+
 import modelo.javabean.Trabajo;
 
 public class TrabajoImplDao implements IntTrabajoDao {
@@ -21,6 +22,14 @@ public class TrabajoImplDao implements IntTrabajoDao {
 		listaTrabajos.add(new Trabajo("144", "Coordinador area", 20000, 22000));
 		listaTrabajos.add(new Trabajo("145", "Supervisor", 21000, 23000));
 	}
+	
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	
 	@Override
 	public boolean alta(Trabajo trabajo) {
 		if (listaTrabajos.contains(trabajo))
@@ -30,18 +39,29 @@ public class TrabajoImplDao implements IntTrabajoDao {
 	}
 	@Override
 	public boolean eliminarUno(Trabajo trabajo) {
-		// TODO Auto-generated method stub
-		return false;
+		if (listaTrabajos.contains(trabajo))
+			return listaTrabajos.remove(trabajo);
+		else
+			return false;
 	}
 	@Override
 	public boolean modificarUno(Trabajo trabajo) {
-		// TODO Auto-generated method stub
-		return false;
+		int posicion = listaTrabajos.indexOf(trabajo);
+		if (posicion == -1)
+			return false;
+		else
+			listaTrabajos.set(posicion, trabajo);
+		return true;
 	}
 	@Override
-	public Trabajo buscarUno(int idTrabajo) {
-		// TODO Auto-generated method stub
-		return null;
+	public Trabajo buscarUno(String idTrabajo) {
+		Trabajo trBuscar = new Trabajo();
+		trBuscar.setIdTrabajo(idTrabajo);
+		int posicion = listaTrabajos.indexOf(trBuscar);
+		if (posicion == -1)
+			return null;
+		else
+			return listaTrabajos.get(posicion);
 	}
 	
 }

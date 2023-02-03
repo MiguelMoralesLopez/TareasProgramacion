@@ -2,10 +2,7 @@ package modelo.dao;
 
 import java.util.ArrayList;
 
-import modelo.javabean.Departamento;
 import modelo.javabean.Empleado;
-import modelo.javabean.Localidad;
-import modelo.javabean.Trabajo;
 
 public class Empresa implements IntGestionEmpresa{
 	
@@ -22,27 +19,19 @@ public class Empresa implements IntGestionEmpresa{
 	
 	//Método privado para cargar datos iniciales en el ArrayList.
 	private void cargarDatos() {
-		//Localidades.
-		Localidad loc1 = new Localidad(100001, "Calle del Sol, 5", "Madrid", "España");
-		Localidad loc2 = new Localidad(100002, "Calle de Venus, 17", "Pinto", "España");
-		Localidad loc3 = new Localidad(100003, "Calle de Mercurio, 5", "Valdemoro", "España");
-		
-		//Departamentos.
-		Departamento dpto1 = new Departamento(1001, "RRHH", loc1);
-		Departamento dpto2 = new Departamento(1002, "IT", loc2);
-		Departamento dpto3 = new Departamento(1003, "I+D", loc3);
-		
-		//Trabajos.
-		Trabajo tr1 = new Trabajo("9101", "Nóminas", 17500.00, 21500.00);
-		Trabajo tr2 = new Trabajo("9102", "Contabilidad", 18500.00, 24500.00);
-		Trabajo tr3 = new Trabajo("9103", "Contrataciones", 19500.00, 25500.00);
-		
-		//Empleados.
-		personal.add(new Empleado(141001, "Pedro", "Mármol Sílice", null, 'H', 19500.00, 75.00, tr3, dpto1));
-		personal.add(new Empleado(141002, "María", "Álvarez Domínguez", null, 'M', 20500.00, 120.00, tr2, dpto2));
-		personal.add(new Empleado(141003, "José Antonio", "Pardo Pérez", null, 'H', 19750.00, 50.00, tr2, dpto3));
-		personal.add(new Empleado(141004, "Laura", "Cuevas Espejo", null, 'M', 22500.00, 150.00, tr2, dpto1));
-		personal.add(new Empleado(141005, "Pedro", "Pica Piedra", null, 'H', 22450.00, 100.00, tr1, dpto1));
+
+		DepartamentoImplDao dpto1 = new DepartamentoImplDao("Departamentos");
+		TrabajoImplDao tr1 = new TrabajoImplDao("Trabajos");
+		personal.add(new Empleado(141001, "Pedro", "Mármol Sílice", null, 'H', 19500.00, 75.00, 
+				tr1.buscarUno("144"), dpto1.buscarUno(201)));
+		personal.add(new Empleado(141002, "María", "Álvarez Domínguez", null, 'M', 20500.00, 120.00,
+				tr1.buscarUno("143"), dpto1.buscarUno(202)));
+		personal.add(new Empleado(141003, "José Antonio", "Pardo Pérez", null, 'H', 19750.00, 50.00,
+				tr1.buscarUno("142"), dpto1.buscarUno(202)));
+		personal.add(new Empleado(141004, "Laura", "Cuevas Espejo", null, 'M', 22500.00, 150.00,
+				tr1.buscarUno("142"), dpto1.buscarUno(202)));
+		personal.add(new Empleado(141005, "Pedro", "Pica Piedra", null, 'H', 22450.00, 100.00,
+				tr1.buscarUno("141"), dpto1.buscarUno(203)));
 	}
 	
 	//Getter y Setter.
