@@ -3,7 +3,7 @@ package test;
 import modelo.dao.*;
 import modelo.javabean.*;
 
-public class Principal {
+public class Principal{
 
 	public static void main(String[] args) {
 		
