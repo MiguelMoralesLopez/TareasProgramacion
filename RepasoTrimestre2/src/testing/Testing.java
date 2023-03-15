@@ -39,9 +39,10 @@ public class Testing {
 		//buscar por tipo
 		System.out.println("");
 		System.out.println("Test buscar por tipo");
-		System.out.println(ins1.buscarPersonaPorTipo("Alumno"));
+		for (Persona  ele: ins1.buscarPersonaPorTipo("Alumno")) {
+			System.out.println(ele);
+		}
 		
-
 	}
 
 }

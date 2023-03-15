@@ -19,8 +19,11 @@ public class Instituto implements InstitutoDao {
 	
 	public void cargarDatos() {
 		lista.add(new Alumno("45555557", "Pablo Mármol", "Calle Sol 1", "9876544312", "1º DAW"));
+		
 		lista.add(new Profesor("45555555", "Paco Martín", "Calle del Pez", "977777777", "Matemáticas"));
+		
 		lista.add(new Administrativo("47777777", "Marta Martinez", "Calle del agua", "985214763", "Captación de alumnos"));
+		
 	}
 
 	@Override
